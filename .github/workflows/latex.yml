@@ -1,0 +1,27 @@
+name: Build LaTeX document
+on: [push]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Set up Git repository
+        uses: actions/checkout@v2  
+        
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          extra_system_packages: "py-pygments"
+          args: "-g -pdf -file-line-error -halt-on-error -interaction=nonstopmode -shell-escape"
+          working_directory: src/
+          root_file: |
+            main.tex
+            main-frn.tex
+            main.tex
+            
+      - name: Upload to Netlify     
+        uses: MrFlynn/upload-to-netlify-action@v2
+        with:
+          source-file: "src/main.pdf"
+          destination-path: "/writeup.pdf"
+          site-name: large-project
+          netlify-token: ${{ secrets.NETLIFY_TOKEN }}
