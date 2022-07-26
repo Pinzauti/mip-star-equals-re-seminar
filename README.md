@@ -1,4 +1,6 @@
 # MIP*=RE
+[![.github/workflows/latex.yml](https://github.com/Pinzauti/mip-star-equals-re-seminar/actions/workflows/latex.yml/badge.svg)](https://github.com/Pinzauti/mip-star-equals-re-seminar/actions/workflows/latex.yml)
+![MIT](https://img.shields.io/badge/license-MIT-brightgreen) 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5f2d738d-f6dc-4a18-adbd-d9aa542440ff/deploy-status)](https://app.netlify.com/sites/mip-star-equals-re-seminar/deploys)
 
 MIP*=RE is a breakthrough result, shaking the world of physics, mathematics and computer science, all at once. Results like this are exceptionally rare, and trying to overcome the complexity of them to grasp the deep meaning behind them is something definitely worth it. 
