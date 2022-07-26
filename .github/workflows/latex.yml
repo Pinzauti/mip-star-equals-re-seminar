@@ -19,5 +19,5 @@ jobs:
         with:
           source-file: "src/main.pdf"
           destination-path: "/seminar.pdf"
-          site-name: large-project
+          site-name: mip-star-equals-re-seminar
           netlify-token: ${{ secrets.NETLIFY_TOKEN }}
