@@ -1,0 +1,44 @@
+
+\subsection{Quantum commuting correlation set}
+Without going to much in the detail, Quantum Field Theory\footnote{Yes, we are now considering systems close to the speed of light.} motivate the need to use another model, namely the commuting operator model. The key difference from the quantum mechanics correlation set is that the two operators act on the same Hilbert space (which is possibly infinitely dimensional). However the two operators have to commute, and this guarantees again, using the language of relativity, that the measurements are executed in a casually disconnected manner and that the outcomes are casually independent.
+
+
+\begin{defn}
+Let $C_{q c}(n, k)$ denote the set of quantum commuting correlations, which is the set of tuples $\left(p_{a b x y}\right)$ arising from operators $\left\{A_{a}^{x}\right\}$ and $\left\{B_{b}^{y}\right\}$ acting on a single Hilbert space $\mathcal{H}$ and a state $\ket{\psi} \in \mathcal{H}$ such that
+\begin{equation}
+    \begin{split}
+&\forall x, y \in\{1, \ldots, n\}, \forall a, b \in\{1, \ldots, k\}, \quad \\
+ &p_{a b x y}=\bra{\psi}\left(A_{a}^{x} B_{b}^{y}\right) \ket{\psi} \quad \text { and } \quad\left[A_{a}^{x}, B_{b}^{y}\right]=0 .
+    \end{split}
+\end{equation}
+\end{defn}
+Note the key difference with spatial correlations is that in (8) all operators act on the same (separable) Hilbert space. The requirement that operators associated with different inputs (questions) $x, y$ commute.
+\subsection{The problem}
+
+We know that
+
+\begin{equation}
+    C_{q}(n, k) \subseteq C_{q s}(n, k) \subseteq C_{q a}(n, k) \subseteq C_{q c}(n, k)
+\end{equation}
+
+the first two inclusion are trivial, and comes directly from the definition. The last inclusion is not immediate, but neither difficult to prove, however we prefer to skip a little bit of physics in order to reach as fast as possible the computer science side. Intuitively however, we can think as the last inclusion as the consequence of the fact that quantum field theory describes accurately quantum mechanics when we consider non relativistic speeds, namely the commuting operator framework contains the tensor product framework.
+
+From~\cite{ts1}, \cite{ts2} and \cite{ts3} we know that :
+
+\begin{theorem}
+    \begin{align}
+    C_{q s}(n, k) &\subsetneq C_{q c}(n, k) \\
+     C_{q s}(n, k) &\subsetneq C_{q a}(n, k) \\
+    C_{q}(n, k) &\subsetneq C_{q s}(n, k).
+    \end{align}
+\end{theorem}
+
+Only an open question remains, namely: 
+
+\begin{problem}[Tsirelson's problem]
+    \begin{equation}
+    C_{q a}(n, k) \stackrel{?}= C_{q c}(n, k).
+    \end{equation}
+\end{problem}
+
+If this seems like a meaningless question, this is not: the problem of Tsirelson is to decide the question whether all quantum correlation functions between two independent observers derived from commuting observables can also be expressed using observables defined on a Hilbert space of tensor product form\footnote{To be precise, this question is relevant only considering the Hilbert space as infinite-dimensional.}. Those are two different formalism, and we are asking whatever they can describe the same physical phenomena.
