@@ -1,8 +1,15 @@
 \subsection{The class MIP}
 
+\begin{defn}
+    Let the provers $P_{1}, \ldots, P_{i}$ be computationally unbounded Turing machines. Let the verifier $V$ be a PPT machine. We allow each $P_{i}$ to communicate with $V$ and vice versa during the course of the protocol, bu
+    1
+    we do not allow the $P_{i}$ to communicate with one another. Then we say $L \in$ MIP if $x \in L \Longrightarrow \operatorname{Pr}\left[P_{1}, \ldots, P_{k}\right.$ convince $\mathrm{V}$ to accept $\left.\mathrm{x}\right]=1$
+    $x \notin L \Longrightarrow \forall P_{1}^{\prime}, \ldots, P_{k}^{\prime}, \operatorname{Pr}\left[P_{1}^{\prime}, \ldots, P_{k}^{\prime}\right.$ convince $\mathrm{V}$ to accept $\left.\mathrm{x}\right] \leq 1 / 2$
+    where the $P^{\prime}$ notation denotes a dishonest prover and where the constants are arbitrary.
+\end{defn}
 
 \begin{theorem}
-MIP=NEXPTIME.
+MIP=NEXPTIME~\cite{topicsin}.
 \end{theorem}
 
 This shows how MIP is drastically more powerful of IP, allowing us to verify polynomially all the problems in NEXPTIME
@@ -11,6 +18,11 @@ This shows how MIP is drastically more powerful of IP, allowing us to verify pol
 \subsection{The class MIP*}
 
 
+\subsection{Nonlocal games}
+
+\begin{theorem}
+MIP=MIP(2,1).
+\end{theorem}
 \subsection{The class RE}
 
 
