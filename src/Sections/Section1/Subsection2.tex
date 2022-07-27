@@ -1,6 +1,6 @@
 \subsection{POVM measurements}
-Suppose a measurement described by measurement operators $M_{m}$ is performed upon a quantum system in the state $|\psi\rangle$. Then the probability of outcome $m$ is given by $p(m)=\left\langle\psi\left|M_{m}^{\dagger} M_{m}\right| \psi\right\rangle$. Suppose we define
+Suppose a measurement described by measurement operators $M_{m}$ is performed upon a quantum system in the state $|\psi\rangle$. Then the probability of outcome $m$ is given by $p(m)=\bra{\psi}M_{m}^{\dagger} M_{m}\ket{\psi}$. Suppose we define
 \begin{equation}
 E_{m} \equiv M_{m}^{\dagger} M_{m}.
 \end{equation}
-Then from Postulate 3 and elementary linear algebra, $E_{m}$ is a positive operator such that $\sum_{m} E_{m}=I$ and $p(m)=\left\langle\psi\left|E_{m}\right| \psi\right\rangle$. Thus the set of operators $E_{m}$ are sufficient to determine the probabilities of the different measurement outcomes. The operators $E_{m}$ are known as the POVM elements associated with the measurement. The complete set $\left\{E_{m}\right\}$ is known as a POVM.
+Then from postulate~\ref{postulate:3} and elementary linear algebra, $E_{m}$ is a positive operator such that $\sum_{m} E_{m}=I$ and $p(m)=\left\langle\psi\left|E_{m}\right| \psi\right\rangle$. Thus the set of operators $E_{m}$ are sufficient to determine the probabilities of the different measurement outcomes. The operators $E_{m}$ are known as the POVM elements associated with the measurement. The complete set $\left\{E_{m}\right\}$ is known as a POVM, the acronym stands for \emph{Positive Operator-Valued Measure}~\cite{NielsenChuang}.
