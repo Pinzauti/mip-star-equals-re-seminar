@@ -13,15 +13,19 @@ whether a given instance $x$ is in a language $L$ or not. In this setting, after
 \end{defn}
 
 An example of a MIP problem is the \textsc{gap-maxcut} problem.
+
+we can prove that~\cite{topicsin}:
 \begin{theorem}
-MIP=NEXPTIME~\cite{topicsin}.
+    \begin{equation}
+\text{MIP}=\text{NEXPTIME}.
+    \end{equation}
 \end{theorem}
 
 This shows how MIP is drastically more powerful of IP, allowing us to verify polynomially all the problems in NEXPTIME.
 
 
 \subsubsection{The class MIP*}
-The definition of the class MIP* is exactly the same as MIP, except that the provers can share arbitrarily many entangled qubits. The verifier is classical, as are all messages between the provers and verifier. 
+The definition of the class MIP* is exactly the same as MIP, except that the verifiers is interacting with multiple quantum provers sharing entanglement. The verifier is classical, as are all messages between the provers and verifier. 
 
 Note that this does not mean that the provers can communicate with each other. What does it means is that some of the qubits in their possession are entangled with the qubits of the other (for obvious reasons, the dimension of the entanglement is the same for both the parties). Does this mean that they can share information? No, it does not. As stated already many times, the provers are located far enough to make the measurements operations disconnected, and we can prove that quantum teletransportation is impossible without an exchange of classical information~\cite{NielsenChuang}. However the fact that the provers can not communicate does not mean that entanglement gives no power to MIP*, it definitely does, as we are going to see.
 Note also that there is no bound on the dimension of the entanglement.
@@ -48,9 +52,12 @@ This is because we can prove that~\cite{mipre}:
     \end{equation}
 \end{theorem}
 
-\subsubsection{Classical games}
+We are going to refomulate such proof systems (i.e. MIP, MIP*) as \emph{nonlocal games}, to which they are isomorphic. Specifically we are going to map MIP to \emph{classical nonlocal games} and \emph{non local games using tensor product formalism}. Let us proceed defining them.
+\subsubsection{Classical non local games}
 
-\subsubsection{Quantum games}\label{subsection:quantum-games}
+In a nonlocal game, we say that a verifier interacts with multiple non-communicating players (instead of provers - there is no formal difference between the two terms). 
+
+Let us define: 
 
 \begin{defn} A two-player one-round game $\mathfrak{G}$ is specified by a tuple $(\mathcal{X}, \mathcal{Y}, \mathcal{A}, \mathcal{B}, \mu, D)$ where
     \begin{itemize}
@@ -61,14 +68,46 @@ This is because we can prove that~\cite{mipre}:
     \end{itemize}
 \end{defn}
 
-A language $L$ is in $\operatorname{MIP}^{*}(2,1)$ if and only if there is an efficient mapping from instances $z \in\{0,1\}^{*}$ to nonlocal games $\mathfrak{G}_{z}$ such that if $z \in L$, then $\operatorname{val}^{*}\left(\mathfrak{G}_{z}\right) \geq 2 / 3$ and otherwise $\operatorname{val}^{*}\left(\mathfrak{G}_{z}\right) \leq 1 / 3$. Here, for an $n$-question, $k$-answer game $\mathfrak{G}$, we let val ${ }^{*}(\mathfrak{G})$ denote its
-We therefore have an isomorphism between the quantum game $\mathfrak{G}$ and the class MIP*(2, 1).
+An $n$-question, $k$-answer nonlocal game $\mathfrak{G}$ is specified by two procedures: a question sampling procedure that samples a pair of questions $(x, y) \in\{1, \ldots, n\}^{2}$ for the players according to a distribution $\mu$ (known to the verifier and the players), and a decision procedure that takes as input the players' questions and their respective answers $a, b \in\{1, \ldots, k\}$ and evaluates a predicate $D(x, y, a, b) \in\{0,1\}$ to determine the verifier's acceptance or rejection.
+
+In classical complexity theory, the main quantity associated with a nonlocal game $\mathfrak{G}$ is its classical value, which is the maximum success probability that two cooperating but non-communicating players have in the game. Formally, the classical value is defined as
+
+\begin{defn}
+\begin{equation}\label{eq:classical-value}
+\operatorname{val}(\mathfrak{G})=\sup _{p \in C_{c}(n, k)} \sum_{x, y} \mu(x, y) \sum_{a, b} D(x, y, a, b) p_{a b x y},
+\end{equation}
+where the set $C_{c}(n, k)$ is the set defined in section~\ref{sec:classical-correlation-set}.
+\end{defn}
+
+To make the connection with interactive proof systems, observe that the assertion that $L \in \operatorname{MIP}(2,1)$ precisely amounts to the specification of an efficient mapping from problem instances $z$ to games $\mathfrak{G}_{z}$ such hat whenever $z \in L$ then $\operatorname{val}\left(\mathfrak{G}_{z}\right) \geq \frac{2}{3}$, whereas if $z \notin L$ then $\operatorname{val}\left(\mathfrak{G}_{z}\right) \leq \frac{1}{3}$. Thus the complexity of the optimization problem~\ref{eq:classical-value} captures the complexity of the decision problem $L$.
+
+\subsubsection{Nonlocal games using tensor product formalism}\label{subsection:quantum-games}
+
+We know show the mapping from $MIP*$ to $\mathfrak{G}$: a language $L$ is in $\operatorname{MIP}^{*}(2,1)$ if and only if there is an efficient mapping from instances $z \in\{0,1\}^{*}$ to nonlocal games $\mathfrak{G}_{z}$ such that if $z \in L$, then $\operatorname{val}^{*}\left(\mathfrak{G}_{z}\right) \geq 2 / 3$ and otherwise $\operatorname{val}^{*}\left(\mathfrak{G}_{z}\right) \leq 1 / 3$.
+ For an $n$-question, $k$-answer game $\mathfrak{G}$, we let val ${ }^{*}(\mathfrak{G})$ denote its \emph{entangled value}, defined as:
 
 \begin{defn}
     \begin{equation}
-    \operatorname{val}(\mathfrak{G})=\sup _{p \in C_{c}(n, k)} \sum_{x, y} \mu(x, y) \sum_{a, b} D(x, y, a, b) p_{a b x y},
+    \operatorname{val^{*}}(\mathfrak{G})=\sup _{p \in C_{q}(n, k)} \sum_{x, y} \mu(x, y) \sum_{a, b} D(x, y, a, b) p_{a b x y},
     \end{equation}
 \end{defn}
+
+
+We therefore have an isomorphism between the quantum game $\mathfrak{G}$ with value $\operatorname{val^{*}}(\mathfrak{G})$ and the class MIP*(2, 1).
+
+
+Since $C_{c}(n, k) \subseteq C_{q}(n, k)$ as proved in section~\ref{sec:quantum-commuting-correlation-set} for all $n, k$, we have that val $(\mathfrak{G}) \leq \operatorname{val}^{*}(\mathfrak{G}) ;$ in other words, quantum spatial strategies can perform at least as well as classical strategies in a nonlocal game.
+
+At this point, it should not be difficult to guess the definition of the commuting operator value of a game, which is defined simply as:
+
+\begin{defn}
+    \begin{equation}
+    \operatorname{val^\text{co}}(\mathfrak{G})=\sup _{p \in C_{q c}(n, k)} \sum_{x, y} \mu(x, y) \sum_{a, b} D(x, y, a, b) p_{a b x y},
+    \end{equation}
+\end{defn}
+
+Therefore if $\operatorname{val^{*}}(\mathfrak{G}) = \operatorname{val^\text{co}}(\mathfrak{G})$ then Tsirelson's problem has a positive answer, otherwise it has a negative answer.
+
 
 \subsubsection{The class RE}
 

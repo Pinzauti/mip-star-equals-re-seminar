@@ -51,8 +51,11 @@ In an interactive proof, an all-powerful prover is trying to convince a skeptica
 
 An example of an IP problem is the \textsc{graph non-isomorphism} problem.
 
+We can prove that~\cite{ipequalspspace}:
 \begin{theorem}
- IP = PSPACE~\cite{ipequalspspace}.
+    \begin{equation}
+ \text{IP} = \text{PSPACE}.
+    \end{equation}
 \end{theorem}
 
 This means that we can polynomially verify the problems in PSPACE, using an interactive proof system as described above; those problems are (believed to be) vastly more difficult than those that can be checked using a static and deterministic proof (i.e. NP problems.)
