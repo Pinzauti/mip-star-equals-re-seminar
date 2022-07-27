@@ -1,40 +1,15 @@
-\subsection{The class MIP}
+\subsection{Quantum correlation set}
 
 \begin{defn}
-    Let the provers $P_{1}, \ldots, P_{i}$ be computationally unbounded Turing machines. Let the verifier $V$ be a PPT machine. We allow each $P_{i}$ to communicate with $V$ and vice versa during the course of the protocol, bu
-    1
-    we do not allow the $P_{i}$ to communicate with one another. Then we say $L \in$ MIP if $x \in L \Longrightarrow \operatorname{Pr}\left[P_{1}, \ldots, P_{k}\right.$ convince $\mathrm{V}$ to accept $\left.\mathrm{x}\right]=1$
-    $x \notin L \Longrightarrow \forall P_{1}^{\prime}, \ldots, P_{k}^{\prime}, \operatorname{Pr}\left[P_{1}^{\prime}, \ldots, P_{k}^{\prime}\right.$ convince $\mathrm{V}$ to accept $\left.\mathrm{x}\right] \leq 1 / 2$
-    where the $P^{\prime}$ notation denotes a dishonest prover and where the constants are arbitrary.
+    For integer $n, k \geq 2$ define the quantum (spatial) correlation set $C_{q s}(n, k)$ as the subset of $\mathbb{R}^{n^{2} k^{2}}$ such that $\left(p_{a b x y}\right) \in C_{q s}(n, k)$ if and only if there exist separable Hilbert spaces $\mathcal{H}_{\mathrm{A}}$ and $\mathcal{H}_{\mathrm{B}}$, for every $x \in\{1, \ldots, n\}$ (resp. $y \in\{1, \ldots, n\}$ ), a collection of projections $\left\{A_{a}^{x}\right\}_{a \in\{1, \ldots, k\}}$ on $\mathcal{H}_{\mathrm{A}}$ (resp. $\left\{B_{b}^{y}\right\}_{b \in\{1, \ldots, k\}}$ on $\mathcal{H}_{\mathrm{B}}$ ) that sum to identity, and a state (unit vector) $\psi \in \mathcal{H}_{\mathrm{A}} \otimes \mathcal{H}_{\mathrm{B}}$ such that
+    \begin{equation}
+    \forall x, y \in\{1,2, \ldots, n\}, \quad \forall a, b \in\{1,2, \ldots, k\}, \quad p_{a b x y}=\bra{\psi}\left(A_{a}^{x} \otimes B_{b}^{y}\right) \ket{\psi} .
+    \end{equation}.
 \end{defn}
 
-\begin{theorem}
-MIP=NEXPTIME~\cite{topicsin}.
-\end{theorem}
+Note that due to the normalization conditions on $\psi$ and on $\left\{A_{a}^{x}\right\}$ and $\left\{B_{b}^{y}\right\}$, for each $x, y,\left(p_{a b x y}\right)$ is a probability distribution on $\{1,2, \ldots, k\}^{2}$. By taking direct sums it is easy to see that the set $C_{q s}(n, k)$ is convex. Let $C_{q a}(n, k)$ denote its closure (it is known that $C_{q s}(n, k) \neq C_{q a}(n, k)$, see [Slo19a]).~\cite{mipre}.
 
-This shows how MIP is drastically more powerful of IP, allowing us to verify polynomially all the problems in NEXPTIME
+\subsection{Quantum commuting correlation set}
 
 
-\subsection{The class MIP*}
-
-
-\subsection{Nonlocal games}
-
-\begin{theorem}
-MIP=MIP(2,1).
-\end{theorem}
-\subsection{The class RE}
-
-
-Let us make a little bit of order and recollect all the known result from~\cite{papadimitriou1994computational} plus what we got since here:
-
-\begin{equation}
-\begin{split}
-    &L \subseteq \text{NL} \subseteq P \subseteq \text{NP} \subseteq \text{PH} \subseteq \text{PSPACE} = \text{NPSPACE} = \text{IP} \subseteq \text{EXPTIME} \subseteq  \\
-    &\subseteq \text{NEXPTIME} = \text{MIP} \subseteq \text{EXPSPACE} = \text{NEXPSPACE} \subseteq R \subseteq \text{RE}.
-\end{split}
-\end{equation}
-
-Given the title of this seminar, it should't been difficult to guess the place of MIP* in the hierarchy.
-
-\subsection{CHSH game}
+\subsection{The problem}

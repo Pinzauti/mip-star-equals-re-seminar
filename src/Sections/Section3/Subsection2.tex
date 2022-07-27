@@ -1,0 +1,49 @@
+\subsection{The class MIP}
+In \emph{Multiprover Interactive Proofs} a polynomial-time verifier can interact with two (or more) provers to decide
+whether a given instance $x$ is in a language $L$ or not. In this setting, after the verifier and all the provers receive the common input z, the provers are not allowed to communicate with each other, and the verifier “cross-interrogates” the provers in order to decide if $z \subseteq L$. The provers may coordinate a joint strategy ahead of time, but once the protocol begins the provers can only interact with the verifier. Formally:
+\begin{defn}
+    Let the provers $P_{1}, \ldots, P_{i}$ be computationally unbounded Turing machines. Let the verifier $V$ be a PPT\footnote{Probabilistic polynomial-time machines, i.e. Turing machines that are polynomially-bound and probabilistic.} machine. We allow each $P_{i}$ to communicate with $V$ and vice versa during the course of the protocol, but we do not allow the $P_{i}$ to communicate with one another. 
+    
+    We say $L \in$ MIP if 
+    \begin{description}
+\item[Completness: ]$x \in L \Rightarrow \operatorname{Pr}\left[P_{1}, \ldots, P_{k}\right.$ convince $\mathrm{V}$ to accept $\left.\mathrm{x}\right]=1$
+\item[Soundness: ]$x \notin L \Rightarrow \forall P_{1}^{\prime}, \ldots, P_{k}^{\prime} \quad \operatorname{Pr}\left[P_{1}^{\prime}, \ldots, P_{k}^{\prime}\right.$ convince $\mathrm{V}$ to accept $\left.\mathrm{x}\right] \leq 1 / 2$
+    \end{description}   
+    where the $P^{\prime}$ notation denotes a dishonest prover and where the constants are arbitrary.
+\end{defn}
+
+An example of a MIP problem is the \textsc{gap-maxcut} problem.
+\begin{theorem}
+MIP=NEXPTIME~\cite{topicsin}.
+\end{theorem}
+
+This shows how MIP is drastically more powerful of IP, allowing us to verify polynomially all the problems in NEXPTIME
+
+
+\subsection{The class MIP*}
+
+
+\subsection{Nonlocal games}
+\begin{defn}
+    \begin{equation}
+    \operatorname{val}(\mathfrak{G})=\sup _{p \in C_{c}(n, k)} \sum_{x, y} \mu(x, y) \sum_{a, b} D(x, y, a, b) p_{a b x y},
+    \end{equation}
+\end{defn}
+\begin{theorem}
+MIP=MIP(2,1).
+\end{theorem}
+\subsection{The class RE}
+
+
+Let us make a little bit of order and recollect all the known result from~\cite{papadimitriou1994computational} plus what we got since here:
+
+\begin{equation}
+\begin{split}
+    &L \subseteq \text{NL} \subseteq P \subseteq \text{NP} \subseteq \text{PH} \subseteq \text{PSPACE} = \text{NPSPACE} = \text{IP} \subseteq \text{EXPTIME} \subseteq  \\
+    &\subseteq \text{NEXPTIME} = \text{MIP} \subseteq \text{EXPSPACE} = \text{NEXPSPACE} \subseteq R \subseteq \text{RE}.
+\end{split}
+\end{equation}
+
+Given the title of this seminar, it should't been difficult to guess the place of MIP* in the hierarchy.
+
+\subsection{CHSH game}
