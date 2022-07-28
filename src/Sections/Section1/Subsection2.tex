@@ -1,3 +1,26 @@
+\subsection{Operator commutativity}
+
+Let us first restate the mathematical statement that two operators $\hat A$ and $\hat B$ commute with each other. It means that
+$$\hat A \hat B - \hat B \hat A = 0,$$
+which you can rearrange to 
+$$\hat A \hat B = \hat B \hat A.$$
+
+Let us recall that operators act on quantum mechanical states and give you a new state in return, then this means that with $\hat A$ and $\hat B$ commuting, the state you obtain from letting first $\hat A$ and then $\hat B$ act on some initial state is *the same* as if you let first $\hat B$ and then $\hat A$ act on that state:
+$$\hat A \hat B | \psi \rangle = \hat B \hat A | \psi \rangle.$$
+
+This is not a trivial statement. Many operations, such as rotations around different axes, do *not* commute and hence the end-result depends on how you have ordered the operations.
+
+So, what are the important implications? When you perform a quantum mechanical measurement, you will always measure an eigenvalue of your operator, and after the measurement your state is left in the corresponding eigenstate. The eigenstates to the operator are precisely those states for which there is no uncertainty in the measurement: You will always measure the eigenvalue, with probability $1$.
+An example are the energy-eigenstates. If you are in a state $|n\rangle$ with eigenenergy $E_n$, you know that $H|n\rangle = E_n |n \rangle$ and you will *always* measure this energy $E_n$.
+
+Now what if we want to measure two different observables, $\hat A$ and $\hat B$? If we first measure $\hat A$, we know that the system is left in an eigenstate of $\hat A$. This might alter the measurement outcome of $\hat B$, so, in general, the order of your measurements is important. Not so with commuting variables! You can show that if $\hat A$ and $\hat B$ commute, then you can come up with a set of basis states $| a_n b_n\rangle$ that are eigenstates of both $\hat A$ and $\hat B$. If that is the case, then any state can be written as a linear combination of the form
+$$| \Psi \rangle = \sum_n \alpha_n | a_n b_n \rangle$$
+where $|a_n b_n\rangle$ has $\hat A$-eigenvalue $a_n$ and $\hat B$-eigenvalue $b_n$.
+
+Now if you measure $\hat A$, you will get result $a_n$ with probability $|\alpha_n|^2$ (assuming no degeneracy; if eigenvalues are degenerate, the argument still remains true but just gets a bit cumbersome to write down). What if we measure $\hat B$ first? Then we get result $b_n$ with probability $|\alpha_n|^2$ and the system is left in the corresponding eigenstate $|a_n b_n \rangle$. 
+
+If we now measure $\hat A$, we will always get result $a_n$. The overall probability of getting result $a_n$, therefore, is again $|\alpha_n|^2$. So it didn't matter that we measure $\hat B$ before, it did not change the outcome of the measurement for $\hat A$.
+
 \subsection{POVM measurements}
 Suppose a measurement described by measurement operators $M_{m}$ is performed upon a quantum system in the state $|\psi\rangle$. Then the probability of outcome $m$ is given by $p(m)=\bra{\psi}M_{m}^{\dagger} M_{m}\ket{\psi}$. Suppose we define
 \begin{equation}
