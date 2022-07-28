@@ -1,4 +1,40 @@
 
 \subsection{Von Neumann algebras}
+We build on the concepts of Banach space and (abstract) $C^{*}$-algebra. In this definition, a Banach space is a complex Banach space and a morphism of Banach spaces is a short linear map (a complex-linear map of norm at most 1); a $C^{*}$-algebra is a complex unital $C^{*}$-algebra, and a morphism of $C^{*}$-algebras is a unital $*$-homomorphism (which is necessarily also a short linear map). Note in particular that an isomorphism of either must be an isometry.
+Given a Banach space $A$, a predual of $A$ is a Banach space $V$ whose dual Banach space $V^{*}$ is isomorphic to $A$ :
+$$
+V^{*} \stackrel{i}{\rightarrow} A
+$$
+(or more properly, equipped with such an isomorphism $i$ ). Similarly, given a morphism $f: A \rightarrow B$ (properly, with $A$ and $B$ so equipped), a predual of $f$ is a morphism $t: W \rightarrow V$ whose dual is isomorphic to $f$ :
+$$
+\begin{array}{ccc}
+V^{*} & \stackrel{i}{\rightarrow} & A \\
+t^{*} \downarrow & & \downarrow f \\
+W^{*} & \stackrel{j}\rightarrow & B
+\end{array}
+$$
+With these preliminaries, a $W^{*}$-algebra or ("abstract") von Neumann algebra is a $C^{*}$-algebra that admits a predual (or more properly, equipped with one), and a $W^{*}$-homomorphism is a $C^{*}$-homomorphism that admits a predual. In this way, the category of $W^{*}$-algebras becomes a subcategory of the category of $C^{*}$-algebras.
+
+
 \subsection{The problem}
-Following the work of~\cite{Tsirelson_1} and~\cite{Tsirelson_2} the result provide a refutation of Connes' embedding conjecture from the theory of von Neumann algebras.
+
+Von Neumann algebras can be seen as rings of operators. One of the most important goals in operator algebras has been to provide a classification of von Neumann algebras and we can prove that classifying von Neumann algebras reduces to understanding their factors, the atoms out of which all von Neumann algebras are built.
+
+It is known that factors of von Neumann algebras come in one of three species: type I, type II, and type III. 
+
+We can define a specific type of Von Neumann algebras, namely \emph{type $II_1$ von Neumann algebras}. This is a subcategory of $C^{*}$-algebras.
+
+The problem state as follows:
+
+\begin{problem}
+    Does every type $II_1$ von Neumann factor ambeds into an ultrapower of the hyperfinite $II_1$ factor?
+\end{problem}
+
+Following the work of~\cite{Tsirelson_1} and~\cite{Tsirelson_2} the result provide a refutation of Connes' embedding conjecture from the theory of von Neumann algebras to Tsirelson's problem:
+
+\begin{theorem}
+If and only if $C_{q a}(n, k) = C_{q c}(n, k)$ then every type $II_1$ von Neumann factor ambeds into an ultrapower of the hyperfinite $II_1$ factor.~\cite{mipre}.
+\end{theorem}
+
+because we now know that Tsirelson's problem has a negative answer, we can give a negative answer also to the Connes' embedding problem.
+

@@ -47,10 +47,9 @@ reject. The class of problems that admit such interactive proofs is denoted MIP(
 
 This is because we can prove that~\cite{mipre}:
 \begin{theorem}
-    \begin{align}
-    \text{MIP}&=\text{MIP}(2,1). \\
-    \text{MIP}^{*}&=\text{MIP}^{*}(2,1).
-    \end{align}
+    \begin{equation}
+    \text{MIP}=\text{MIP}(2,1).
+    \end{equation}
 \end{theorem}
 
 We are going to refomulate such proof systems (i.e. MIP, MIP*) as \emph{nonlocal games}, to which they are isomorphic. Let us proceed defining them.
@@ -131,10 +130,11 @@ This is because  doing all the maths we obtain the following:
 
  \begin{align}
     \operatorname{val}(\text{CHSH}) &= \frac{3}{4} \\
-    \operatorname{val^{*}}(\text{CHSH}) &= \cos^2\left(\frac{\pi}{8}\right) 
+    \operatorname{val^{*}}(\text{CHSH}) &= \operatorname{val^{co}}(\text{CHSH}) = \cos^2\left(\frac{\pi}{8}\right) 
  \end{align}
 
  and the CHSH game was experimentally performed proving $\operatorname{val^{*}}(\text{CHSH})$ to be the correct result.
+Note that the fact that in this specific case $\operatorname{val^{*}}(\text{CHSH}) = \operatorname{val^{co}}(\text{CHSH}) $ it does not prove the general equivalence.
 
 \subsection{Complexity of nonlocal games}
 In this section we are going to explain the link between nonlocal games (and therefore interactive proofs) and the Tsirelson's problem.
@@ -163,7 +163,7 @@ We compute the sequence
 \alpha_1 \leq \alpha_2 \leq \dots \leq \operatorname{val^{*}}(\mathfrak{G}
 \end{equation}
  
-where $alpha_d$ is the $\epsilon$-approximation to the best d-dimensional strategy for $\mathfrak{G}$.
+where $alpha_d$ is the $\epsilon$-approximation to the best d-dimensional strategy for $\mathfrak{G}$. We can show that we can compute it in double exponential time.
 
 note that once you fix d, there is no problem in computing $\alpha_d$.
 
@@ -190,12 +190,12 @@ It is easy to show that
 We have then the following procedure, for $d = 1,2,3, \dots$:
 
 \begin{itemize}
-\item Compute $\alpha_d$
-\item Compute $\beta_d$
-\item if $\beta_d - \alpha_d \leq \epsilon$, output $\beta_d$
+\item Compute $\alpha_d \leq \operatorname{val^{*}}(\mathfrak{G})$.
+\item Compute $\beta_d \geq \operatorname{val^{co}}(\mathfrak{G})$.
+\item If $\beta_d - \alpha_d \leq \epsilon$, output $\beta_d$.
 \end{itemize}
 
-there fore if $C_{q a}(n, k) = C_{q c}(n, k)$ the algorithm converges and approximate $\operatorname{val^{*}}(\mathfrak{G}) \pm \epsilon$.
+there fore if $C_{q a}(n, k) = C_{q c}(n, k)$, and therefore $\operatorname{val^{*}}(\mathfrak{G}) =  \operatorname{val^{co}}(\mathfrak{G})$, the algorithm converges and approximates $\operatorname{val^{*}}(\mathfrak{G}) \pm \epsilon$.
 \end{proof}
 
 
