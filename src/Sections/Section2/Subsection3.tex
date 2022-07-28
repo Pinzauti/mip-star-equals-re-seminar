@@ -1,6 +1,6 @@
 
 \subsection{Quantum commuting correlation set}\label{sec:quantum-commuting-correlation-set}
-Without going to much in the detail, Quantum Field Theory\footnote{Yes, we are now considering systems close to the speed of light.} motivate the need to use another model, namely the commuting operator model. The key difference from the quantum mechanics correlation set is that the two operators act on the same Hilbert space (which is possibly infinitely dimensional). However the two operators have to commute, and this guarantees again, using the language of relativity, that the measurements are executed in a casually disconnected manner and that the outcomes are casually independent.
+Without going to much in the detail, Quantum Field Theory\footnote{Yes, we are now considering systems close to the speed of light.} motivates the need to use another model, namely the commuting operator model. The key difference from the quantum mechanics correlation set is that the two operators act on the same Hilbert space (which is possibly infinitely dimensional). However the two operators have to commute, and this guarantees again, using the language of relativity, that the measurements are executed in a casually disconnected manner and that the outcomes are casually independent.
 
 
 \begin{defn}\label{defn:quantum-commuting-correlation-set}
@@ -8,11 +8,11 @@ Let $C_{q c}(n, k)$ denote the set of quantum commuting correlations, which is t
 \begin{equation}
     \begin{split}
 &\forall x, y \in\{1, \ldots, n\}, \forall a, b \in\{1, \ldots, k\}, \quad \\
- &p_{a b x y}=\bra{\psi}\left(A_{a}^{x} B_{b}^{y}\right) \ket{\psi} \quad \text { and } \quad\left[A_{a}^{x}, B_{b}^{y}\right]=0 .
+ &p_{a b x y}=\bra{\psi}\left(A_{a}^{x} B_{b}^{y}\right) \ket{\psi} \quad \text { and } \quad\left[A_{a}^{x}, B_{b}^{y}\right]=0.
     \end{split}
 \end{equation}
 \end{defn}
-Note the key difference with spatial correlations is that in~\ref{defn:quantum-commuting-correlation-set} all operators act on the same (separable) Hilbert space. 
+Note the key difference with spatial correlations is that in definition~\ref{defn:quantum-commuting-correlation-set} all operators act on the same (separable) Hilbert space~\cite{mipre}. 
 
 \subsection{The problem}
 
@@ -22,7 +22,7 @@ We know that
     C_{q}(n, k) \subseteq C_{q s}(n, k) \subseteq C_{q a}(n, k) \subseteq C_{q c}(n, k)
 \end{equation}
 
-the first two inclusion are trivial, and comes directly from the definition. The last inclusion is not immediate, but neither difficult to prove, however we prefer to skip a little bit of physics in order to reach as fast as possible the computer science side. Intuitively however, we can think as the last inclusion as the consequence of the fact that quantum field theory describes accurately quantum mechanics when we consider non relativistic speeds, namely the commuting operator framework contains the tensor product framework.
+the first three inclusion are trivial, and comes directly from the definition. The last inclusion is not immediate, but neither difficult to prove, however we prefer to skip a little bit of physics in order to reach as fast as possible the computer science side. Intuitively however, we can think as the last inclusion as the consequence of the fact that quantum field theory describes accurately quantum mechanics when we consider non relativistic speeds, namely the commuting operator framework contains the tensor product framework.
 
 From~\cite{ts1}, \cite{ts2} and \cite{ts3} we know that :
 

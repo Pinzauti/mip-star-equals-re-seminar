@@ -2,7 +2,7 @@
 Before introducing the class IP, we quickly remind (one of) the definition of the class NP.
 
 \begin{defn}
-    A language $L$ admits efficiently verifiable proofs if there exists an a a polynomial-time Turing machine $V$ that satisfies the following two properties: 
+    A language $L$ admits efficiently verifiable proofs if there exists a polynomial-time Turing machine $V$ that satisfies the following two properties: 
     \begin{description}\label{descr:np}
         \item[Completeness: ]for any $z \in L$ there is a string $\pi$ such that $V(z, \pi)$ returns 1 (i.e. $V$ "accepts").
         \item[Soundness: ]for any $z \notin L$ there is no string $\pi$ such that $V(z, \pi)$ accepts. 
@@ -10,7 +10,7 @@ Before introducing the class IP, we quickly remind (one of) the definition of th
 \end{defn}
 
 \begin{defn}
-    The set of all languages $L$ with the properties of definition~\ref{descr:np} is denoted by the complexity class NP~\cite{mipre}.
+    The set of all languages $L$ with the properties of definition~\ref{descr:np} is denoted by the complexity class NP~\cite{randomness}.
 \end{defn}
 
 
@@ -46,7 +46,7 @@ $$
 \begin{defn}
     The class \textbf{IP} is the class of languages L such that there exists an IPS for L~\cite{randomness}.
 \end{defn}
-In an interactive proof, an all-powerful prover is trying to convince a skeptical, but computationally limited, verifier that a string $z$ (known to both) lies in the set $L$, even when it may be that in fact $z \notin L$. By interactively interrogating the prover, the verifier can reject false claims, i.e. determine with high statistical confidence whether $z \in L$ or not. Importantly, the verifier is allowed to probabilistically and adaptively choose its messages to the prover.
+In an interactive proof then, an all-powerful prover is trying to convince a skeptical, but computationally limited, verifier that a string $z$ (known to both) lies in the set $L$, even when it may be that in fact $z \notin L$. By interactively interrogating the prover, the verifier can reject false claims, i.e. determine with high statistical confidence whether $z \in L$ or not. Importantly, the verifier is allowed to probabilistically and adaptively choose its messages to the prover.
 
 
 An example of an IP problem is the \textsc{graph non-isomorphism} problem.
@@ -58,6 +58,6 @@ We can prove that~\cite{ipequalspspace}:
     \end{equation}
 \end{theorem}
 
-This means that we can polynomially verify the problems in PSPACE, using an interactive proof system as described above; those problems are (believed to be) vastly more difficult than those that can be checked using a static and deterministic proof (i.e. NP problems.)
+This means that we can polynomially verify the problems in PSPACE, using an interactive proof system as described above; those problems are (believed to be) vastly more difficult than those that can be checked using a static and deterministic proof (i.e. NP problems).
 
 

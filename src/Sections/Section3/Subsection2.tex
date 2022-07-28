@@ -9,12 +9,11 @@ whether a given instance $x$ is in a language $L$ or not. In this setting, after
 \item[Completness: ]$x \in L \Rightarrow \operatorname{Pr}\left[P_{1}, \ldots, P_{k}\right.$ convince $\mathrm{V}$ to accept $\left.\mathrm{x}\right]=1$
 \item[Soundness: ]$x \notin L \Rightarrow \forall P_{1}^{\prime}, \ldots, P_{k}^{\prime} \quad \operatorname{Pr}\left[P_{1}^{\prime}, \ldots, P_{k}^{\prime}\right.$ convince $\mathrm{V}$ to accept $\left.\mathrm{x}\right] \leq 1 / 2$
     \end{description}   
-    where the $P^{\prime}$ notation denotes a dishonest prover and where the constants are arbitrary.
+    where the $P^{\prime}$ notation denotes a dishonest prover and where the constants are again arbitrary.
 \end{defn}
 
 An example of a MIP problem is the \textsc{gap-maxcut} problem.
-
-we can prove that~\cite{topicsin}:
+We can prove that~\cite{topicsin}:
 \begin{theorem}\label{th:mip-nexptime}
     \begin{equation}
 \text{MIP}=\text{NEXPTIME}.
@@ -28,7 +27,7 @@ This shows how MIP is drastically more powerful of IP, allowing us to verify pol
 The definition of the class MIP* is exactly the same as MIP, except that the verifiers is interacting with multiple quantum provers sharing entanglement. The verifier is classical, as are all messages between the provers and verifier. 
 
 Note that this does not mean that the provers can communicate with each other. What does it means is that some of the qubits in their possession are entangled with the qubits of the other (for obvious reasons, the dimension of the entanglement is the same for both the parties). Does this mean that they can share information? No, it does not. As stated already many times, the provers are located far enough to make the measurements operations disconnected, and we can prove that quantum teletransportation is impossible without an exchange of classical information~\cite{NielsenChuang}. However the fact that the provers can not communicate does not mean that entanglement gives no power to MIP*, it definitely does, as we are going to see.
-Note also that there is no bound on the dimension of the entanglement.
+Note also that there is no bound on the dimension of the entanglement, a key point that we will exploit later.
 
 We have a fundamental result which already suggests the power of MIP*~\cite{mipre}:
 
@@ -52,7 +51,7 @@ This is because we can prove that~\cite{mipre}:
     \end{equation}
 \end{theorem}
 
-We are going to refomulate such proof systems (i.e. MIP, MIP*) as \emph{nonlocal games}, to which they are isomorphic. Let us proceed defining them.
+As anticipated, we are going to reformulate such proof systems (i.e. MIP, MIP*) as \emph{nonlocal games}, to which they are isomorphic. Let us proceed defining them.
 \subsubsection{Classical value}
 
 In a nonlocal game, we say that a verifier interacts with multiple non-communicating players (instead of provers - there is no formal difference between the two terms). 
@@ -72,18 +71,18 @@ An $n$-question, $k$-answer nonlocal game $\mathfrak{G}$ is specified by two pro
 
 In classical complexity theory, the main quantity associated with a nonlocal game $\mathfrak{G}$ is its classical value, which is the maximum success probability that two cooperating but non-communicating players have in the game. Formally, the classical value is defined as
 
-\begin{defn}
-\begin{equation}\label{eq:classical-value}
+\begin{defn}\label{eq:classical-value}
+\begin{equation}
 \operatorname{val}(\mathfrak{G})=\sup _{p \in C_{c}(n, k)} \sum_{x, y} \mu(x, y) \sum_{a, b} D(x, y, a, b) p_{a b x y},
 \end{equation}
 where the set $C_{c}(n, k)$ is the set defined in section~\ref{sec:classical-correlation-set}.
 \end{defn}
 
-To make the connection with interactive proof systems, observe that the assertion that $L \in \operatorname{MIP}(2,1)$ precisely amounts to the specification of an efficient mapping from problem instances $z$ to games $\mathfrak{G}_{z}$ such hat whenever $z \in L$ then $\operatorname{val}\left(\mathfrak{G}_{z}\right) \geq \frac{2}{3}$, whereas if $z \notin L$ then $\operatorname{val}\left(\mathfrak{G}_{z}\right) \leq \frac{1}{3}$. Thus the complexity of the optimization problem~\ref{eq:classical-value} captures the complexity of the decision problem $L$.
+To make the connection with interactive proof systems, observe that the assertion that $L \in \operatorname{MIP}(2,1)$ precisely amounts to the specification of an efficient mapping from problem instances $z$ to games $\mathfrak{G}_{z}$ such hat whenever $z \in L$ then $\operatorname{val}\left(\mathfrak{G}_{z}\right) \geq \frac{2}{3}$, whereas if $z \notin L$ then $\operatorname{val}\left(\mathfrak{G}_{z}\right) \leq \frac{1}{3}$. Thus the complexity of the optimization problem defined in~\ref{eq:classical-value} captures the complexity of the decision problem $L$.
 
 \subsubsection{Entangled value}\label{subsection:quantum-games}
 
-We know show the mapping from $MIP^{*}$ to $\mathfrak{G}$: a language $L$ is in $\operatorname{MIP}^{*}(2,1)$ if and only if there is an efficient mapping from instances $z \in\{0,1\}^{*}$ to nonlocal games $\mathfrak{G}_{z}$ such that if $z \in L$, then $\operatorname{val}^{*}\left(\mathfrak{G}_{z}\right) \geq 2 / 3$ and otherwise $\operatorname{val}^{*}\left(\mathfrak{G}_{z}\right) \leq 1 / 3$.
+We now show the mapping from $MIP^{*}$ to $\mathfrak{G}$: a language $L$ is in $\operatorname{MIP}^{*}(2,1)$ if and only if there is an efficient mapping from instances $z \in\{0,1\}^{*}$ to nonlocal games $\mathfrak{G}_{z}$ such that if $z \in L$, then $\operatorname{val}^{*}\left(\mathfrak{G}_{z}\right) \geq 2 / 3$ and otherwise $\operatorname{val}^{*}\left(\mathfrak{G}_{z}\right) \leq 1 / 3$.
  For an $n$-question, $k$-answer game $\mathfrak{G}$, we let val ${ }^{*}(\mathfrak{G})$ denote its \emph{entangled value}, defined as\footnote{Note that we can show that $\operatorname{val^{*}}(\mathfrak{G})$ can be equivalently taken over $C_{q}(n, k)$, $C_{q s}(n, k)$ or $C_{q a}(n, k)$. This is because $C_{q}(n, k)$ and $C_{q s}(n, k)$ have the same closure $C_{q a}(n, k)$. We choose $C_{q}(n, k)$ because it is the easiest to work with.}:
 
 \begin{defn}\label{defn:entangled-value}
@@ -93,12 +92,12 @@ We know show the mapping from $MIP^{*}$ to $\mathfrak{G}$: a language $L$ is in 
 \end{defn}
 
 
-We therefore have an isomorphism between the optimization problem $\operatorname{val^{*}}(\mathfrak{G})$ and the class MIP*(2, 1) and consequently the class MIP*.
+We therefore have an isomorphism between the optimization problem $\operatorname{val^{*}}(\mathfrak{G})$ and the class MIP*(2, 1).
 
 
 Since $C_{c}(n, k) \subseteq C_{q}(n, k)$ as proved in section~\ref{sec:quantum-commuting-correlation-set} for all $n, k$, we have that $\operatorname{val}(\mathfrak{G}) \leq \operatorname{val}^{*}(\mathfrak{G}) ;$ in other words, quantum spatial strategies can perform at least as well as classical strategies in a nonlocal game.
 
-Note that because of how classical correlation where defined in~\ref{defn:classical-correlation-set} and how quantum spatial correlation where defined in~\ref{defn:quantum-spatial-correlation-set} we can obtain $\operatorname{val}(\mathfrak{G})$ by using diagonal POVMs operators.  
+Note that because of how classical correlation where defined in defintition~\ref{defn:classical-correlation-set} and how quantum spatial correlation where defined in definition~\ref{defn:quantum-correlation-set} we can obtain $\operatorname{val}(\mathfrak{G})$ by using diagonal POVMs operators.  
 
 \paragraph{Commuting operator value}
 
@@ -133,18 +132,18 @@ This is because  doing all the maths we obtain the following:
     \operatorname{val^{*}}(\text{CHSH}) &= \operatorname{val^{co}}(\text{CHSH}) = \cos^2\left(\frac{\pi}{8}\right) 
  \end{align}
 
- and the CHSH game was experimentally performed proving $\operatorname{val^{*}}(\text{CHSH})$ to be the correct result.
-Note that the fact that in this specific case $\operatorname{val^{*}}(\text{CHSH}) = \operatorname{val^{co}}(\text{CHSH}) $ it does not prove the general equivalence.
+ and the CHSH game was experimentally tested, proving $\operatorname{val^{*}}(\text{CHSH})$ to be the correct result.
+Note that the fact that in this specific case $\operatorname{val^{*}}(\text{CHSH}) = \operatorname{val^{co}}(\text{CHSH}) $  does not prove the general equivalence.
 
 \subsection{Complexity of nonlocal games}
 In this section we are going to explain the link between nonlocal games (and therefore interactive proofs) and the Tsirelson's problem.
 
 First of all let us ask the complexity of finding $\operatorname{val}(\mathfrak{G})$. 
-We know that this is NP-complete, which is consistent with theorem~\ref{th:mip-nexptime}. 
+We know that this is NP-complete. 
 
-As a consequence of for the \emph{PCP Theorem} (probabilistic checkable proofs) we know that even the problem of finding $\operatorname{val}(\mathfrak{G}) \pm \epsilon$ with $ 0 < \epsilon < 1$.
+As a consequence of for the \emph{PCP Theorem} (probabilistic checkable proofs) we know that even the problem of finding $\operatorname{val}(\mathfrak{G}) \pm \epsilon$ with $ 0 < \epsilon < 1$ is NP-complete.
 
-There is a trivial algorithm operating in exponential time, that is enumerating over all the possible deterministic strategies for player. This is because we know the possible set of question $x,y$ and answers $a,b$ and therefore there are a finite number of possible strategies.
+There is a trivial algorithm operating in exponential time, that is enumerating over all the possible deterministic strategies for the players. This is because we know the possible set of questions $x,y$ and answers $a,b$ and therefore there are a finite number of possible strategies.
 
 We now ask ourself the complexity of computing (even approximating) $\operatorname{val^{*}}(\mathfrak{G})$. Here the situation changes, we can prove that there is actually no algorithm to compute $\operatorname{val^{*}}(\mathfrak{G})$ exactly. Why is that? The problem is that there is not an upper bound on the dimension of the entanglement in the strategy, thus we could go on augmenting the dimension of the entanglement hoping to find a better strategy.
 
@@ -152,7 +151,7 @@ We now ask ourself the complexity of computing (even approximating) $\operatorna
 
 We can show that~\cite{mipre}:
 
-\begin{theorem}
+\begin{theorem}\label{th:tsirelon}
 If $C_{q a}(n, k) = C_{q c}(n, k)$ then there exist an algorithm to compute $\operatorname{val^{*}}(\mathfrak{G})$.
 \end{theorem}
 \begin{proof}[Sketch of proof]
@@ -160,12 +159,11 @@ We can think of a procedure divided in two parts in order to approximate $\opera
 The search from below strategy works as follows:
 We compute the sequence 
 \begin{equation}
-\alpha_1 \leq \alpha_2 \leq \dots \leq \operatorname{val^{*}}(\mathfrak{G}
+\alpha_1 \leq \alpha_2 \leq \dots \leq \operatorname{val^{*}}(\mathfrak{G})
 \end{equation}
  
-where $alpha_d$ is the $\epsilon$-approximation to the best d-dimensional strategy for $\mathfrak{G}$. We can show that we can compute it in double exponential time.
-
-note that once you fix d, there is no problem in computing $\alpha_d$.
+where $\alpha_d$ is the $\epsilon$-approximation to the best d-dimensional strategy for $\mathfrak{G}$. We can show that we can compute it in double exponential time.
+Note that once you fix d, there is no problem in computing $\alpha_d$.
 
 It is easy to show that 
 
@@ -195,14 +193,14 @@ We have then the following procedure, for $d = 1,2,3, \dots$:
 \item If $\beta_d - \alpha_d \leq \epsilon$, output $\beta_d$.
 \end{itemize}
 
-there fore if $C_{q a}(n, k) = C_{q c}(n, k)$, and therefore $\operatorname{val^{*}}(\mathfrak{G}) =  \operatorname{val^{co}}(\mathfrak{G})$, the algorithm converges and approximates $\operatorname{val^{*}}(\mathfrak{G}) \pm \epsilon$.
+therefore if $C_{q a}(n, k) = C_{q c}(n, k)$, and thus $\operatorname{val^{*}}(\mathfrak{G}) =  \operatorname{val^{co}}(\mathfrak{G})$, the algorithm converges and approximates $\operatorname{val^{*}}(\mathfrak{G}) \pm \epsilon$.
 \end{proof}
 
 
 \subsection{The class RE}
 
 \begin{defn}
-A language $L$ is in RE, \emph{recursively enumerable} if exists a turing machine M which:
+A language $L$ is in RE, \emph{recursively enumerable}, if there exists a turing machine M which:
 \begin{itemize}
 \item If $x \in L$, then $M$ accept $x$.
 \item if $x \notin L$, then $M$ reject $x$ or $\uparrow$.

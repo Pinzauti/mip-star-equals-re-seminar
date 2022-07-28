@@ -1,17 +1,20 @@
 \subsection{Commutation of operators}
 
-Let us first restate the mathematical statement that two operators $\hat A$ and $\hat B$ commute with each other. It means that
-$$\hat A \hat B - \hat B \hat A = 0,$$
-which you can rearrange to 
-$$\hat A \hat B = \hat B \hat A.$$
+\begin{defn}
+    Two operators $\hat A$ and $\hat B$ commute with each other If
+    \begin{equation}
+        [\hat A,\hat B] = \hat A \hat B - \hat B \hat A = 0.
+    \end{equation}
+\end{defn}
+
 
 Let us recall that operators act on quantum mechanical states and give you a new state in return, then this means that with $\hat A$ and $\hat B$ commuting, the state you obtain from letting first $\hat A$ and then $\hat B$ act on some initial state is *the same* as if you let first $\hat B$ and then $\hat A$ act on that state:
 $$\hat A \hat B | \psi \rangle = \hat B \hat A | \psi \rangle.$$
 
-This is not a trivial statement. Many operations, such as rotations around different axes, do *not* commute and hence the end-result depends on how you have ordered the operations.
+This is not a trivial statement. Many operations, such as rotations around different axes, do not commute and hence the end-result depends on how you have ordered the operations.
 
-So, what are the important implications? When you perform a quantum mechanical measurement, you will always measure an eigenvalue of your operator, and after the measurement your state is left in the corresponding eigenstate. The eigenstates to the operator are precisely those states for which there is no uncertainty in the measurement: You will always measure the eigenvalue, with probability $1$.
-An example are the energy-eigenstates. If you are in a state $|n\rangle$ with eigenenergy $E_n$, you know that $H|n\rangle = E_n |n \rangle$ and you will *always* measure this energy $E_n$.
+So, what are the important implications? When you perform a quantum mechanical measurement, you will always measure an eigenvalue of your operator, and after the measurement your state is left in the corresponding eigenstate. The eigenstates to the operator are precisely those states for which there is no uncertainty in the measurement: you will always measure the eigenvalue, with probability $1$.
+An example are the energy-eigenstates. If you are in a state $|n\rangle$ with eigenenergy $E_n$, you know that $H|n\rangle = E_n |n \rangle$ and you will always measure this energy $E_n$.
 
 Now what if we want to measure two different observables, $\hat A$ and $\hat B$? If we first measure $\hat A$, we know that the system is left in an eigenstate of $\hat A$. This might alter the measurement outcome of $\hat B$, so, in general, the order of your measurements is important. Not so with commuting variables! You can show that if $\hat A$ and $\hat B$ commute, then you can come up with a set of basis states $| a_n b_n\rangle$ that are eigenstates of both $\hat A$ and $\hat B$. If that is the case, then any state can be written as a linear combination of the form
 $$| \Psi \rangle = \sum_n \alpha_n | a_n b_n \rangle$$
