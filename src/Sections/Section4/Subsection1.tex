@@ -56,8 +56,8 @@ Let us now consider two cases
 If $M$ halts in time $T$ the behaviour of the game changes depending on the value of $T$ w.r.t. $n$, we have then:
 
 \begin{align}
-\text{If} \quad n \geq T, \quad \operatorname{val}^{*}(\mathfrak{G}_{n}) = 1 \\
-\text{If} \quad n < T, \quad \operatorname{val}^{*}(\mathfrak{G}_{n}) = \operatorname{val}^{*}(\mathfrak{F}_{n})
+&\text{If} \quad n \geq T, \quad \operatorname{val}^{*}(\mathfrak{G}_{n}) = 1 \\
+&\text{If} \quad n < T, \quad \operatorname{val}^{*}(\mathfrak{G}_{n}) = \operatorname{val}^{*}(\mathfrak{F}_{n})
 \end{align}
 
 and because of theorem~\ref{th:compression} we have:
@@ -77,7 +77,7 @@ and rinse, repeat we obtain:
 If $M$ never halts we go always to point (3) and thus we have:
 
 \begin{equation}
-    \forall n \mathscr{E}\left(\mathfrak{G}_{n}, \frac{1}{2}\right)  = \mathscr{E}\left(\mathfrak{F}_{n+1}, \frac{1}{2}\right)
+    \forall n \quad \mathscr{E}\left(\mathfrak{G}_{n}, \frac{1}{2}\right)  = \mathscr{E}\left(\mathfrak{F}_{n+1}, \frac{1}{2}\right)
 \end{equation}
 
 
@@ -90,7 +90,7 @@ and because of theorem~\ref{th:compression} we have:
 and if we iterate:
 
 \begin{equation}
-    \mathscr{E}\left(\mathfrak{G}_{n}\right) \geq \mathscr{E}\left(\mathfrak{F}_{m}\right) \forall m
+    \mathscr{E}\left(\mathfrak{G}_{n}\right) \geq \mathscr{E}\left(\mathfrak{F}_{m}\right) \quad \forall m
 \end{equation}
 
 again because of theorem~\ref{th:compression} we have:
@@ -105,10 +105,10 @@ but neither of this are lower bound, therefore:
     \mathscr{E}\left(\mathfrak{G}_{n}, \frac{1}{2}\right) = \infty
 \end{equation}
 
-that means that there is no dimension of entanglement sufficient to win this game, and therefore:
+that means that there is no dimension of entanglement sufficient to win this game, and therefore\footnote{There is nothing special about the number $\frac{1}{2}$, other constant can be picked.}:
 
 \begin{equation}
-    \operatorname{val}^{*}(\mathfrak{G}_0) \leq 0.
+    \operatorname{val}^{*}(\mathfrak{G}_0) \leq \frac{1}{2}.
 \end{equation}
 \paragraph{Conclusions}
 Then if we fix a Turing machine $\mathcal{M}$ and consider the following family of nonlocal games $\left\{\mathfrak{G}_{\mathcal{M}, n}^{(0)}\right\}_{n \in \mathbb{N}}$ : for all $n \in \mathbb{N}$, if $\mathcal{M}$ halts in at most $n$ steps (when run on an empty input tape), then $\operatorname{val}^{*}\left(\mathfrak{G}_{\mathcal{M}_{n}}^{(0)}\right)=1$, and otherwise $\operatorname{val}^{*}\left(\mathfrak{G}_{\mathcal{M} n}^{(0)}\right) \leq \frac{1}{2}$
