@@ -47,13 +47,14 @@ reject. The class of problems that admit such interactive proofs is denoted MIP(
 
 This is because we can prove that~\cite{mipre}:
 \begin{theorem}
-    \begin{equation}
-    \text{MIP}=\text{MIP}(2,1).
-    \end{equation}
+    \begin{align}
+    \text{MIP}&=\text{MIP}(2,1). \\
+    \text{MIP}^{*}&=\text{MIP}^{*}(2,1).
+    \end{align}
 \end{theorem}
 
-We are going to refomulate such proof systems (i.e. MIP, MIP*) as \emph{nonlocal games}, to which they are isomorphic. Specifically we are going to map MIP to \emph{classical nonlocal games} and \emph{non local games using tensor product formalism}. Let us proceed defining them.
-\subsubsection{Classical non local games}
+We are going to refomulate such proof systems (i.e. MIP, MIP*) as \emph{nonlocal games}, to which they are isomorphic. Let us proceed defining them.
+\subsubsection{Classical value}
 
 In a nonlocal game, we say that a verifier interacts with multiple non-communicating players (instead of provers - there is no formal difference between the two terms). 
 
@@ -81,22 +82,26 @@ where the set $C_{c}(n, k)$ is the set defined in section~\ref{sec:classical-cor
 
 To make the connection with interactive proof systems, observe that the assertion that $L \in \operatorname{MIP}(2,1)$ precisely amounts to the specification of an efficient mapping from problem instances $z$ to games $\mathfrak{G}_{z}$ such hat whenever $z \in L$ then $\operatorname{val}\left(\mathfrak{G}_{z}\right) \geq \frac{2}{3}$, whereas if $z \notin L$ then $\operatorname{val}\left(\mathfrak{G}_{z}\right) \leq \frac{1}{3}$. Thus the complexity of the optimization problem~\ref{eq:classical-value} captures the complexity of the decision problem $L$.
 
-\subsubsection{Nonlocal games using tensor product formalism}\label{subsection:quantum-games}
+\subsubsection{Entangled value}\label{subsection:quantum-games}
 
-We know show the mapping from $MIP*$ to $\mathfrak{G}$: a language $L$ is in $\operatorname{MIP}^{*}(2,1)$ if and only if there is an efficient mapping from instances $z \in\{0,1\}^{*}$ to nonlocal games $\mathfrak{G}_{z}$ such that if $z \in L$, then $\operatorname{val}^{*}\left(\mathfrak{G}_{z}\right) \geq 2 / 3$ and otherwise $\operatorname{val}^{*}\left(\mathfrak{G}_{z}\right) \leq 1 / 3$.
+We know show the mapping from $MIP^{*}$ to $\mathfrak{G}$: a language $L$ is in $\operatorname{MIP}^{*}(2,1)$ if and only if there is an efficient mapping from instances $z \in\{0,1\}^{*}$ to nonlocal games $\mathfrak{G}_{z}$ such that if $z \in L$, then $\operatorname{val}^{*}\left(\mathfrak{G}_{z}\right) \geq 2 / 3$ and otherwise $\operatorname{val}^{*}\left(\mathfrak{G}_{z}\right) \leq 1 / 3$.
  For an $n$-question, $k$-answer game $\mathfrak{G}$, we let val ${ }^{*}(\mathfrak{G})$ denote its \emph{entangled value}, defined as:
 
-\begin{defn}
+\begin{defn}\label{defn:entangled-value}
     \begin{equation}
     \operatorname{val^{*}}(\mathfrak{G})=\sup _{p \in C_{q}(n, k)} \sum_{x, y} \mu(x, y) \sum_{a, b} D(x, y, a, b) p_{a b x y},
     \end{equation}
 \end{defn}
 
 
-We therefore have an isomorphism between the quantum game $\mathfrak{G}$ with value $\operatorname{val^{*}}(\mathfrak{G})$ and the class MIP*(2, 1).
+We therefore have an isomorphism between the optimization problem $\operatorname{val^{*}}(\mathfrak{G})$ and the class MIP*(2, 1) and consequently the class MIP*.
 
 
-Since $C_{c}(n, k) \subseteq C_{q}(n, k)$ as proved in section~\ref{sec:quantum-commuting-correlation-set} for all $n, k$, we have that val $(\mathfrak{G}) \leq \operatorname{val}^{*}(\mathfrak{G}) ;$ in other words, quantum spatial strategies can perform at least as well as classical strategies in a nonlocal game.
+Since $C_{c}(n, k) \subseteq C_{q}(n, k)$ as proved in section~\ref{sec:quantum-commuting-correlation-set} for all $n, k$, we have that $\operatorname{val}(\mathfrak{G}) \leq \operatorname{val}^{*}(\mathfrak{G}) ;$ in other words, quantum spatial strategies can perform at least as well as classical strategies in a nonlocal game.
+
+Note that because of how classical correlation where defined in~\ref{defn:classical-correlation} and how quantum spatial correlation where defined in~\ref{defn:quantum-spatial-correlation} we can obtain $\operatorname{val}(\mathfrak{G})$ by using diagonal POVMs operators.  
+
+\paragraph{Commuting operator value}
 
 At this point, it should not be difficult to guess the definition of the commuting operator value of a game, which is defined simply as:
 
@@ -108,6 +113,17 @@ At this point, it should not be difficult to guess the definition of the commuti
 
 Therefore if $\operatorname{val^{*}}(\mathfrak{G}) = \operatorname{val^\text{co}}(\mathfrak{G})$ then Tsirelson's problem has a positive answer, otherwise it has a negative answer.
 
+
+\subsection{CHSH game}
+
+Let us give a concrete example of a game:
+\begin{description}
+\item[Input:]questions $x,y \in \{0,1\}$ uniformly random.
+\item[Output:]$a,b \in \{0,1\}$.
+\item[Decision function: ]$D(x, y, a, b) = 1 \leftrightarrow a \bigoplus b = x \land y $. 
+\end{description}
+
+The CHSH game is of trivial importance in quantum mechanics, as it was used to counterproof Bell's theorem and therefore the concept of locality and realism. This is because the CHSH game was experimentally performed proving $\operatorname{val^{*}}(\mathfrak{G})$ to be the correct result.
 
 \subsubsection{The class RE}
 
@@ -130,4 +146,3 @@ Let us make a little bit of order and recollect all the known result from~\cite{
 
 Given the title of this seminar, it should't been difficult to guess the place of MIP* in the hierarchy, and therefore how much powerful multiprover interactive proof with entangled are.
 
-\subsection{CHSH game}
