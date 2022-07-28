@@ -15,7 +15,7 @@ whether a given instance $x$ is in a language $L$ or not. In this setting, after
 An example of a MIP problem is the \textsc{gap-maxcut} problem.
 
 we can prove that~\cite{topicsin}:
-\begin{theorem}
+\begin{theorem}\label{th:mip-nexptime}
     \begin{equation}
 \text{MIP}=\text{NEXPTIME}.
     \end{equation}
@@ -85,7 +85,7 @@ To make the connection with interactive proof systems, observe that the assertio
 \subsubsection{Entangled value}\label{subsection:quantum-games}
 
 We know show the mapping from $MIP^{*}$ to $\mathfrak{G}$: a language $L$ is in $\operatorname{MIP}^{*}(2,1)$ if and only if there is an efficient mapping from instances $z \in\{0,1\}^{*}$ to nonlocal games $\mathfrak{G}_{z}$ such that if $z \in L$, then $\operatorname{val}^{*}\left(\mathfrak{G}_{z}\right) \geq 2 / 3$ and otherwise $\operatorname{val}^{*}\left(\mathfrak{G}_{z}\right) \leq 1 / 3$.
- For an $n$-question, $k$-answer game $\mathfrak{G}$, we let val ${ }^{*}(\mathfrak{G})$ denote its \emph{entangled value}, defined as:
+ For an $n$-question, $k$-answer game $\mathfrak{G}$, we let val ${ }^{*}(\mathfrak{G})$ denote its \emph{entangled value}, defined as\footnote{Note that we can show that $\operatorname{val^{*}}(\mathfrak{G})$ can be equivalently taken over $C_{q}(n, k)$, $C_{q s}(n, k)$ or $C_{q a}(n, k)$. This is because $C_{q}(n, k)$ and $C_{q s}(n, k)$ have the same closure $C_{q a}(n, k)$. We choose $C_{q}(n, k)$ because it is the easiest to work with.}:
 
 \begin{defn}\label{defn:entangled-value}
     \begin{equation}
@@ -99,7 +99,7 @@ We therefore have an isomorphism between the optimization problem $\operatorname
 
 Since $C_{c}(n, k) \subseteq C_{q}(n, k)$ as proved in section~\ref{sec:quantum-commuting-correlation-set} for all $n, k$, we have that $\operatorname{val}(\mathfrak{G}) \leq \operatorname{val}^{*}(\mathfrak{G}) ;$ in other words, quantum spatial strategies can perform at least as well as classical strategies in a nonlocal game.
 
-Note that because of how classical correlation where defined in~\ref{defn:classical-correlation} and how quantum spatial correlation where defined in~\ref{defn:quantum-spatial-correlation} we can obtain $\operatorname{val}(\mathfrak{G})$ by using diagonal POVMs operators.  
+Note that because of how classical correlation where defined in~\ref{defn:classical-correlation-set} and how quantum spatial correlation where defined in~\ref{defn:quantum-spatial-correlation-set} we can obtain $\operatorname{val}(\mathfrak{G})$ by using diagonal POVMs operators.  
 
 \paragraph{Commuting operator value}
 
@@ -111,10 +111,11 @@ At this point, it should not be difficult to guess the definition of the commuti
     \end{equation}
 \end{defn}
 
+Again it is trivial to see that $\operatorname{val^{*}}(\mathfrak{G}) \subseteq \operatorname{val^\text{co}}(\mathfrak{G})$ for how we defined $C_{q a}(n, k)$ and $C_{q c}(n, k)$ in~\ref{defn:quantum-correlation-set} and~\ref{defn:quantum-commuting-correlation-set}.
 Therefore if $\operatorname{val^{*}}(\mathfrak{G}) = \operatorname{val^\text{co}}(\mathfrak{G})$ then Tsirelson's problem has a positive answer, otherwise it has a negative answer.
 
 
-\subsection{CHSH game}
+\subsubsection{CHSH game}
 
 Let us give a concrete example of a game:
 \begin{description}
@@ -123,10 +124,79 @@ Let us give a concrete example of a game:
 \item[Decision function: ]$D(x, y, a, b) = 1 \leftrightarrow a \bigoplus b = x \land y $. 
 \end{description}
 
-The CHSH game is of trivial importance in quantum mechanics, as it was used to counterproof Bell's theorem and therefore the concept of locality and realism. This is because the CHSH game was experimentally performed proving $\operatorname{val^{*}}(\mathfrak{G})$ to be the correct result.
+The CHSH game is of trivial importance in quantum mechanics, as it was used to counterproof Bell's theorem and therefore the concept of locality and realism.
+
+
+This is because  doing all the maths we obtain the following:
+
+ \begin{align}
+    \operatorname{val}(\text{CHSH}) &= \frac{3}{4} \\
+    \operatorname{val^{*}}(\text{CHSH}) &= \cos^2\left(\frac{\pi}{8}\right) 
+ \end{align}
+
+ and the CHSH game was experimentally performed proving $\operatorname{val^{*}}(\text{CHSH})$ to be the correct result.
 
 \subsection{Complexity of nonlocal games}
+In this section we are going to explain the link between nonlocal games (and therefore interactive proofs) and the Tsirelson's problem.
 
+First of all let us ask the complexity of finding $\operatorname{val}(\mathfrak{G})$. 
+We know that this is NP-complete, which is consistent with theorem~\ref{th:mip-nexptime}. 
+
+As a consequence of for the \emph{PCP Theorem} (probabilistic checkable proofs) we know that even the problem of finding $\operatorname{val}(\mathfrak{G}) \pm \epsilon$ with $ 0 < \epsilon < 1$.
+
+There is a trivial algorithm operating in exponential time, that is enumerating over all the possible deterministic strategies for player. This is because we know the possible set of question $x,y$ and answers $a,b$ and therefore there are a finite number of possible strategies.
+
+We now ask ourself the complexity of computing (even approximating) $\operatorname{val^{*}}(\mathfrak{G})$. Here the situation changes, we can prove that there is actually no algorithm to compute $\operatorname{val^{*}}(\mathfrak{G})$ exactly. Why is that? The problem is that there is not an upper bound on the dimension of the entanglement in the strategy, thus we could go on augmenting the dimension of the entanglement hoping to find a better strategy.
+
+
+
+We can show that~\cite{mipre}:
+
+\begin{theorem}
+If $C_{q a}(n, k) = C_{q c}(n, k)$ then there exist an algorithm to compute $\operatorname{val^{*}}(\mathfrak{G})$.
+\end{theorem}
+\begin{proof}[Sketch of proof]
+We can think of a procedure divided in two parts in order to approximate $\operatorname{val^{*}}(\mathfrak{G})$: search from above and search from below.
+The search from below strategy works as follows:
+We compute the sequence 
+\begin{equation}
+\alpha_1 \leq \alpha_2 \leq \dots \leq \operatorname{val^{*}}(\mathfrak{G}
+\end{equation}
+ 
+where $alpha_d$ is the $\epsilon$-approximation to the best d-dimensional strategy for $\mathfrak{G}$.
+
+note that once you fix d, there is no problem in computing $\alpha_d$.
+
+It is easy to show that 
+
+\begin{equation}
+\alpha_d \rightarrow \operatorname{val^{*}}(\mathfrak{G}) \quad \text{as} \quad d \rightarrow \infty.
+\end{equation}
+
+Let us now consider the search from above strategy:
+
+\begin{equation}
+\beta_1 \geq \beta_2 \geq \dots \geq \operatorname{val^{co}}(\mathfrak{G})
+\end{equation}
+
+where $beta_d$ is the best upper bound on $\operatorname{val^{co}}(\mathfrak{G})$.
+
+It is easy to show that 
+
+\begin{equation}
+\beta_d \rightarrow \operatorname{val^{co}}(\mathfrak{G}) \quad \text{as} \quad d \rightarrow \infty.
+\end{equation}
+
+We have then the following procedure, for $d = 1,2,3, \dots$:
+
+\begin{itemize}
+\item Compute $\alpha_d$
+\item Compute $\beta_d$
+\item if $\beta_d - \alpha_d \leq \epsilon$, output $\beta_d$
+\end{itemize}
+
+there fore if $C_{q a}(n, k) = C_{q c}(n, k)$ the algorithm converges and approximate $\operatorname{val^{*}}(\mathfrak{G}) \pm \epsilon$.
+\end{proof}
 
 
 \subsection{The class RE}
@@ -154,5 +224,5 @@ Let us make a little bit of order and recollect all the known result from~\cite{
     \caption{Complexity classes hierarchy, not in scale.}
     \end{figure}
 
-Given the title of this seminar, it should't been difficult to guess the place of MIP* in the hierarchy, and therefore how much powerful multiprover interactive proof with entangled are.
+Given the title of this seminar, it should't been difficult to guess the place of MIP* in the hierarchy, and therefore how much powerful multiprover interactive proof with entanglement are.
 
