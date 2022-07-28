@@ -8,15 +8,137 @@ The all proof is obtained by designing an entangled-prover interactive proof (i.
 \end{proof}
 \end{theorem}
 
-What we are going to do then is 
 \subsection{Sketch of the proof}
-\subsubsection{Recursive compression of non-local games}
+Let use define some notation.
+\begin{defn}
+    Given an infinite family of games $\left\{\mathfrak{G}_{n}\right\}_{n \in \mathbb{N}}$, we say that the family is uniformly generated if there is a polynomialtime Turing machine that on input $n$ returns a description of the game $\mathfrak{G}_{n}$. Given a game $\mathfrak{G}$ and $p \in[0,1]$ let $\mathscr{E}(\mathfrak{G}, p)$ denote the minimum local dimension of an entangled state shared by the players in order for them to succeed in $\mathfrak{G}$ with probability at least $p$.
+\end{defn}
+
+
+
+Let use give some example of entanglement lower bound for the known game CHSH:
+
+\begin{align}
+    \mathscr{E}(\text{CHSH}, \frac{3}{4}) &= 0 \\
+    \mathscr{E}(\text{CHSH}, \cos^2{\frac{\pi}{4}}) &= 0 \\
+    \mathscr{E}(\text{CHSH}, 1) &= \infty
+\end{align}
+
+Where in the first case we are referring to the classical case, the second is the quantum case and the third simply means that it is not possible to win the game with that probability.
+
+
+
 \subsubsection{The compression theorem}
+\begin{theorem}\label{th:compression}
+     Given as input a uniformly generated family $\left\{\mathfrak{G}_{n}\right\}_{n \in \mathbb{N}}$ of normal form games, the compression procedure returns another uniformly generated family $\left\{\mathfrak{F}_{n}\right\}_{n \in \mathbb{N}}$ of normal form games with the following properties: 
+     \begin{itemize}
+     \item for all $n$, if $\operatorname{val}^{*}\left(\mathfrak{G}_{{n}}\right)=1$ then $\operatorname{val}^{*}\left(\mathfrak{F}_{n}\right)=1$, and 
+        \item for all $n$, if $\operatorname{val}^{*}\left(\mathfrak{G}_{{n}}\right) \leq \frac{1}{2}$ then $\operatorname{val}^{*}\left(\mathfrak{F}_{n}\right) \leq \frac{1}{2}$ and moreover
+     \end{itemize}
+    \begin{equation}
+    \mathscr{E}\left(\mathfrak{F}_{n}, \frac{1}{2}\right) \geq \max \left\{\mathscr{E}\left(\mathfrak{G}_{{n}}, \frac{1}{2}\right), 2^{2^{\Omega(n)}}\right\}
+    \end{equation}
+\end{theorem}
+\subsubsection{Recursive compression of non-local games}
+We fix a machine $M$ (we want to check if it halts or not) and define a uniform family of games $\{\mathfrak{G}\}$
+We can define the following procedure for the game $\mathfrak{G}_{n}$:
+
+\begin{enumerate}
+\item Run $M$ for $n$ time steps. If $M$ halts, accept.
+\item Otherwise, compute $\mathfrak{F} = \textsc{Compress}({\mathfrak{G}_n})$
+\item  Play nonlocal game $\mathfrak{F}_{n+1}$
+\end{enumerate}
+
+Let us now consider two cases 
+
+\paragraph{M halts}
+
+If $M$ halts in time $T$ the behaviour of the game changes depending on the value of $T$ w.r.t. $n$, we have then:
+
+\begin{align}
+\text{If} \quad n \geq T, \quad \operatorname{val}^{*}(\mathfrak{G}_{n}) = 1 \\
+\text{If} \quad n < T, \quad \operatorname{val}^{*}(\mathfrak{G}_{n}) = \operatorname{val}^{*}(\mathfrak{F}_{n})
+\end{align}
+
+and because of theorem~\ref{th:compression} we have:
+
+\begin{equation}
+    \operatorname{val}^{*}(\mathfrak{G}_T) = 1 \Rightarrow \operatorname{val}^{*}(\mathfrak{F}_T) = 1 \Rightarrow \operatorname{val}^{*}(\mathfrak{G}_{T-1}) = 1
+\end{equation}
+
+
+and rinse, repeat we obtain:
+
+\begin{equation}
+    \operatorname{val}^{*}(\mathfrak{G}_0) = 1
+\end{equation}
+
+\paragraph{M does not halt}
+If $M$ never halts we go always to point (3) and thus we have:
+
+\begin{equation}
+    \forall n \mathscr{E}\left(\mathfrak{G}_{n}, \frac{1}{2}\right)  = \mathscr{E}\left(\mathfrak{F}_{n+1}, \frac{1}{2}\right)
+\end{equation}
+
+
+and because of theorem~\ref{th:compression} we have:
+
+\begin{equation}
+    \mathscr{E}\left(\mathfrak{F}_{n+1}\right) \geq \mathscr{E}\left(\mathfrak{G}_{n+1}\right)
+\end{equation}
+
+and if we iterate:
+
+\begin{equation}
+    \mathscr{E}\left(\mathfrak{G}_{n}\right) \geq \mathscr{E}\left(\mathfrak{F}_{m}\right) \forall m
+\end{equation}
+
+again because of theorem~\ref{th:compression} we have:
+
+\begin{equation}
+    \mathscr{E}\left(\mathfrak{G}_{n}\right) \geq 2^m \forall m
+\end{equation}
+
+but neither of this are lower bound, therefore:
+
+\begin{equation}
+    \mathscr{E}\left(\mathfrak{G}_{n}, \frac{1}{2}\right) = \infty
+\end{equation}
+
+that means that there is no dimension of entanglement sufficient to win this game, and therefore:
+
+\begin{equation}
+    \operatorname{val}^{*}(\mathfrak{G}_0) \leq 0.
+\end{equation}
+\paragraph{Conclusions}
+Then if we fix a Turing machine $\mathcal{M}$ and consider the following family of nonlocal games $\left\{\mathfrak{G}_{\mathcal{M}, n}^{(0)}\right\}_{n \in \mathbb{N}}$ : for all $n \in \mathbb{N}$, if $\mathcal{M}$ halts in at most $n$ steps (when run on an empty input tape), then $\operatorname{val}^{*}\left(\mathfrak{G}_{\mathcal{M}_{n}}^{(0)}\right)=1$, and otherwise $\operatorname{val}^{*}\left(\mathfrak{G}_{\mathcal{M} n}^{(0)}\right) \leq \frac{1}{2}$
+We have then constructed a mapping from the Halt problem to a game $\mathfrak{G}$ with value $\operatorname{val}^{*}(\mathfrak{G})$ as requested, and thus we can conclude that:
+\begin{theorem}
+\begin{equation}
+\text{MIP}^{*} = \text{RE}
+\end{equation}
+\end{theorem}
 
 \subsection{Consequences on Tsirelson's problem}
-As proved in~\ref{subsection:quantum-games} we have an isomorphism between the optimization problem $\operatorname{val^{*}}(\mathfrak{G})$ and the class MIP*(2, 1) and therefore the whole MIP*. But we just (kind of) proved that MIP*=RE.
-What does that means?
+As proved in~\ref{subsection:quantum-games} we have an isomorphism between the optimization problem $\operatorname{val^{*}}(\mathfrak{G})$ and the class MIP*. But we just (kind of) proved that MIP*=RE.
 
-Again, we are not going to be concerned with a specific proof, but we will just sketch it.
+This means that the Halt problem is in MIP*, but we know that:
+
+\begin{theorem}\label{th:halting}
+    The halt problem is not decidable.
+\end{theorem}
+
+and therefore there can not be an algorithm that successfully approximates val, as this would mean, if we encode the Halting problem in a nonlocal game we could use this algorithm to solve the Halting problem, contradicting the theorem~\ref{th:halting}.
+
+Therefore for how we constructed the algorithm in theorem~\ref{th:tsilerson} there bust me a game $\mathfrak{G}$ for which $\operatorname{val^{*}}(\mathfrak{G}) \neq  \operatorname{val^{co}}(\mathfrak{G})$ and therefore:
+
+\begin{theorem}
+    \begin{equation}
+    C_{q a}(n, k) \neq C_{q c}(n, k)
+    \end{equation}
+\end{theorem}
+
+Tsirelson inequality is false.
+
 
 
