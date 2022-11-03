@@ -46,7 +46,7 @@ $$
 \begin{defn}
     The class \textbf{IP} is the class of languages L such that there exists an IPS for L~\cite{randomness}.
 \end{defn}
-In an interactive proof then, an all-powerful prover is trying to convince a skeptical, but computationally limited, verifier that a string $z$ (known to both) lies in the set $L$, even when it may be that in fact $z \notin L$. By interactively interrogating the prover, the verifier can reject false claims, i.e. determine with high statistical confidence whether $z \in L$ or not. Importantly, the verifier is allowed to probabilistically and adaptively choose its messages to the prover.
+What does it mean? In an interactive proof a super powerful prover is trying to convince a skeptical and limited in computational power verifier that a string $z$, which is known to both, belong in the set $L$, even when it may be that in fact $z \notin L$. Because the verifier is interactively interrogating the prover he is able to reject false claims, that is determine with high statistical confidence if $z \in L$ or not. Crucial is the fact that the verifier is allowed to choose its messages to the prover, in a probabilistic and adaptive way.
 
 
 An example of an IP problem is the \textsc{graph non-isomorphism} problem.
@@ -58,6 +58,7 @@ We can prove that~\cite{ipequalspspace}:
     \end{equation}
 \end{theorem}
 
-This means that we can polynomially verify the problems in PSPACE, using an interactive proof system as described above; those problems are (believed to be) vastly more difficult than those that can be checked using a static and deterministic proof (i.e. NP problems).
+Because of this we can verify the problems in PSPACE polynomially, using an interactive proof system as we already described.
+We believe that the problems in PSPACE are significantly more difficult than those that can be checked using a deterministic proof, like NP problems.
 
 
