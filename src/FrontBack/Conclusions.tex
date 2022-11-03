@@ -1,6 +1,6 @@
 \section*{Conclusions}
 
-The first important conclusion that comes to mind is the fact that a problem that has no solution can be verified. Complexity theory has taught us that there can be a large gap between the complexity of verification versus search, but it has always been a difference of efficiency: if solutions to a problem can be verified then solutions can also be found (even if with drastically higher computational cost). This result show us that, with quantum computation, there can be a chasm of computability between verifying solutions and finding them.
+The first important conclusion that comes to mind is the fact that a problem that has no solution can be verified. Thanks to complexity theory we know that there can be a large gap between the complexity of verification and the complexity of search, but it has always been a difference in terms of efficiency: if solutions to a problem can be verified then solutions can also be found, even if with very higher computational cost. This result show us that with quantum computation there can be a big gap in terms of computability, not only efficiency, when we talk about verifying solutions or finding them.
 
 \quad 
 
@@ -20,14 +20,11 @@ We also quickly mention some open questions:
 
 Finally an important conclusion is that it seems like quantum computation is inherently more powerful in verifying problem rather than solving problem. Let us explain.
 
-At the moment we have the following situation: there are some evidence~\cite{Bennett_1997} that $\textbf{BQP} \neq \textbf{BPP}$ (i.e. polynomial-time quantum Turing machines are more powerful than polynomial-time probabilistic Turing machines). Since \textbf{BPP} is regarded as the class of all efficiently computable languages, this provides evidence that quantum computers could be inherently more powerful than classical computers in a model-independent way.
-
-However exactly where \textbf{BQP} fits with respect to \textbf{P}, \textbf{NP} and \textbf{PSPACE} is as yet unknown. What is known is that quantum computers can solve all the problems in \textbf{P} efficiently and that there are no problems outside of \textbf{PSPACE} which they can solve efficiently. Therefore, \textbf{BQP} lies somewhere between \textbf{P} and \textbf{PSPACE}.
 It has been demonstrated that
 \begin{equation*}
    \textbf{P}   \subseteq \textbf{BPP} \subseteq \textbf{BQP}  \subseteq \textbf{PSPACE}
 \end{equation*}
-note that this is not even close to be a speed improvement  as it is MIP*=RE, where, with respect to the classical case, the power of verification is astonishingly enhanced.
+and that this is not even close to be a speed improvement  as it is MIP*=RE, where, with respect to the classical case, the power of verification is astonishingly enhanced.
 
 
 \begin{figure}[h]

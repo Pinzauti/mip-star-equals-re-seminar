@@ -4,14 +4,14 @@ The all proof is obtained by designing an entangled-prover interactive proof (i.
 \begin{theorem}
     The halting problem $H$ is RE-complete~\cite{Algorithms}.
 \begin{proof}
-    Let $L$ be any recursively enumerable language. Assume $M$ accepts $L$. Clearly, one can decide whether $x \in L$ by asking if $M: x \in H$. This reduction is clearly computable. Hence all recursively enumerable languages are reducible to $H$.
+    Let $L$ be any recursively enumerable language. Assume $M$ accepts $L$. Clearly, one can decide whether $x \in L$ by asking if $M: x \in H$. This reduction is clearly computable. Hence all recursively enumerable languages are reducible to $H$~\cite{Algorithms}.
 \end{proof}
 \end{theorem}
 
 \subsection{Sketch of the proof}
 Let use define some notation.
 \begin{defn}
-    Given an infinite family of games $\left\{\mathfrak{G}_{n}\right\}_{n \in \mathbb{N}}$, we say that the family is uniformly generated if there is a polynomial-time Turing machine that on input $n$ returns a description of the game $\mathfrak{G}_{n}$. Given a game $\mathfrak{G}$ and $p \in[0,1]$ let $\mathscr{E}(\mathfrak{G}, p)$ denote the minimum local dimension of an entangled state shared by the players in order for them to succeed in $\mathfrak{G}$ with probability at least $p$.
+    Given an infinite family of games $\left\{\mathfrak{G}_{n}\right\}_{n \in \mathbb{N}}$, we say that the family is uniformly generated if there is a polynomial-time Turing machine that on input $n$ returns a description of the game $\mathfrak{G}_{n}$. Given a game $\mathfrak{G}$ and $p \in[0,1]$ let $\mathscr{E}(\mathfrak{G}, p)$ denote the minimum local dimension of an entangled state shared by the players in order for them to succeed in $\mathfrak{G}$ with probability at least $p$~\cite{mipre}.
 \end{defn}
 
 
@@ -37,7 +37,7 @@ where in the first case we are referring to the classical case, the second is th
      \end{itemize}
     \begin{equation}
     \mathscr{E}\left(\mathfrak{F}_{n}, \frac{1}{2}\right) \geq \max \left\{\mathscr{E}\left(\mathfrak{G}_{{n}}, \frac{1}{2}\right), 2^{2^{\Omega(n)}}\right\}
-    \end{equation}
+    \end{equation}~\cite{mipre}
 \end{theorem}
 \subsubsection{Recursive compression of non-local games}
 We fix a machine $M$ (we want to check if it halts or not) and define a uniform family of games $\{\mathfrak{G}_n\}$.
@@ -111,7 +111,7 @@ that means that there is no dimension of entanglement sufficient to win this gam
     \operatorname{val}^{*}(\mathfrak{G}_0) \leq \frac{1}{2}.
 \end{equation}
 \paragraph{Conclusions}
-Then if we fix a Turing machine $\mathcal{M}$ and consider the following family of nonlocal games $\left\{\mathfrak{G}_{\mathcal{M}, n}^{(0)}\right\}_{n \in \mathbb{N}}$ : for all $n \in \mathbb{N}$, if $\mathcal{M}$ halts in at most $n$ steps (when run on an empty input tape), then $\operatorname{val}^{*}\left(\mathfrak{G}_{\mathcal{M}_{n}}^{(0)}\right)=1$, and otherwise $\operatorname{val}^{*}\left(\mathfrak{G}_{\mathcal{M} n}^{(0)}\right) \leq \frac{1}{2}$.
+Then if we fix a Turing machine $\mathcal{M}$ and consider the following family of nonlocal games $\left\{\mathfrak{G}_{\mathcal{M}, n}^{(0)}\right\}_{n \in \mathbb{N}}$ : for all $n \in \mathbb{N}$, if $\mathcal{M}$ halts in at most $n$ steps, then $\operatorname{val}^{*}\left(\mathfrak{G}_{\mathcal{M}_{n}}^{(0)}\right)=1$, and otherwise $\operatorname{val}^{*}\left(\mathfrak{G}_{\mathcal{M} n}^{(0)}\right) \leq \frac{1}{2}$.
 We have then constructed a mapping from the Halt problem to a game $\mathfrak{G}$ with value $\operatorname{val}^{*}(\mathfrak{G})$ as requested, and thus we can conclude that:
 \begin{theorem}
 \begin{equation}
