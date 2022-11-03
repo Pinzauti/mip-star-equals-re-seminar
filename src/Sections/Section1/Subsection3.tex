@@ -8,7 +8,7 @@ Because of \hyperref[postulate:1]{postulate 1} and according to the definition o
 \begin{equation}\label{eq:linear-combination}
   \ket{\psi} = a \ket{\alpha} + b \ket{\beta} \quad \ket{\alpha},\ket{\beta} \in \mathcal{H}_\psi \quad a,b \in \mathbb{C} \quad \abs*{a}^2 + \abs*{b}^2 = 1
 \end{equation}
-is still part of the state space and it still describes the physics of the system. (There is only a constraint: the state has to be normalized according to \eqref{eq:normalization}, such a rescaling is possible and will be assumed hereafter.) 
+is still part of the state space and it still describes the physics of the system. (There is only a constraint: the state has to be normalized according to \eqref{eq:normalization}, such a rescaling is possible and will be assumed from now on.) 
 
 
 Here lies the main difference between bits and qubits: whereas in classical computation only $0$ and $1$ states are allowed, in quantum computation also superposition states are perfectly acceptable.
@@ -52,11 +52,11 @@ Consider two arbitrary quantum systems $Q_1$ and $Q_2$, with respective Hilbert 
 \begin{equation*}
 \mathcal{H}_{Q_1} \otimes \mathcal{H}_{Q_2}\,,
 \end{equation*}
-if the first system is in state $\ket{\psi}_{Q_1}$ and the second in state $\ket{\psi}_{Q_2}$ the state of the composite system is
+when the first system is in state $\ket{\psi}_{Q_1}$ and the second in state $\ket{\psi}_{Q_2}$ the global state of the composite system is
 \begin{equation}
     \ket{\psi}_{Q_1} \otimes \ket{\psi}_{Q_2}\,.
 \end{equation}
-States of the composite system that can be represented in this form are called \emph{separable states} while
+States that can be written in this form are called \emph{separable states} while
 \begin{defn}
 A composite system such that $\ket{QR} \neq \otimes_i \ket{Q_i}$ is an \emph{entangled state}~\cite{verrucchi}.
 \end{defn}
